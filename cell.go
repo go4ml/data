@@ -6,7 +6,7 @@ import (
 	"reflect"
 	"strconv"
 	"strings"
-	"sudachen.xyz/pkg/errstr"
+	"go4ml.xyz/errstr"
 )
 
 type Cell struct {

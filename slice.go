@@ -1,6 +1,6 @@
 package data
 
-import "sudachen.xyz/pkg/fu"
+import "go4ml.xyz/fu"
 
 type tableSlice struct {
 	Frame

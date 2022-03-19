@@ -2,13 +2,12 @@ package csv
 
 import (
 	"encoding/csv"
-	"sudachen.xyz/pkg/data"
-	"sudachen.xyz/pkg/errstr"
-	"sudachen.xyz/pkg/fu"
-	"sudachen.xyz/pkg/iokit"
-	"sudachen.xyz/pkg/lazy"
+	"go4ml.xyz/data"
+	"go4ml.xyz/errstr"
+	"go4ml.xyz/fu"
+	"go4ml.xyz/iokit"
+	"go4ml.xyz/lazy"
 )
-
 
 /*
 	csv.Write(t,iokit.File("file.csv.xz"),
@@ -26,7 +25,6 @@ import (
 				csv.Comma('|'),
 				csv.Column("feature_1").As("Feature1"))
 */
-
 
 func Write(t data.Table, dest iokit.Output, opts ...interface{}) (err error) {
 	return t.Lazy().Drain(Sink(dest, opts...))
@@ -59,7 +57,7 @@ func Sink(dest iokit.Output, opts ...interface{}) lazy.WorkerFactory {
 			return nil
 		case *data.Row:
 			if !hasHeader {
-				names = make([]string,x.Factory.Width())
+				names = make([]string, x.Factory.Width())
 				for i := range names {
 					names[i] = x.Factory.Name(i)
 				}
@@ -79,7 +77,7 @@ func Sink(dest iokit.Output, opts ...interface{}) lazy.WorkerFactory {
 			}
 			return cwr.Write(r)
 		default:
-			return errstr.Errorf("unsupported value type %v",fu.TypeOf(v))
+			return errstr.Errorf("unsupported value type %v", fu.TypeOf(v))
 		}
 	})
 }

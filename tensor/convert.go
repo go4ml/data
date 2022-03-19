@@ -2,9 +2,9 @@ package tensor
 
 import (
 	"reflect"
-	"sudachen.xyz/pkg/data"
-	"sudachen.xyz/pkg/errstr"
-	"sudachen.xyz/pkg/fu"
+	"go4ml.xyz/data"
+	"go4ml.xyz/errstr"
+	"go4ml.xyz/fu"
 )
 
 type Xtensor struct{ T reflect.Type }
@@ -47,7 +47,7 @@ func (t Xtensor) ConvertElm(value string, data *interface{}, index, width int) (
 	return z.ConvertElem(value, index)
 }
 
-func (Xtensor) Format(x interface{}) (string,error) {
+func (Xtensor) Format(x interface{}) (string, error) {
 	if x == nil {
 		return "", nil
 	}

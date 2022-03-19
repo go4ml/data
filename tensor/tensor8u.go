@@ -3,8 +3,8 @@ package tensor
 import (
 	"reflect"
 	"strconv"
-	"sudachen.xyz/pkg/data"
-	"sudachen.xyz/pkg/fu"
+	"go4ml.xyz/data"
+	"go4ml.xyz/fu"
 )
 
 type tensor8u struct {

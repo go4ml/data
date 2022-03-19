@@ -2,8 +2,8 @@ package data
 
 import (
 	"fmt"
+	"go4ml.xyz/fu"
 	"strings"
-	"sudachen.xyz/pkg/fu"
 )
 
 func (t Table) Head(n int) string {
@@ -48,7 +48,7 @@ func (t Table) Display(from, to int) string {
 		}
 		u[0] = ln
 		for j := range w[1:] {
-			ws := t.At(j).At(k+from).String()
+			ws := t.At(j).At(k + from).String()
 			if len(ws) > w[j+1] {
 				w[j+1] = len(ws)
 			}

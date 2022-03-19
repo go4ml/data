@@ -1,6 +1,6 @@
 package data
 
-import "sudachen.xyz/pkg/lazy"
+import "go4ml.xyz/lazy"
 
 type Column struct{ Sequence }
 
@@ -12,7 +12,7 @@ func (c Column) Lazy() lazy.Source {
 	return func(...interface{}) lazy.Stream {
 		clen := c.Len()
 		i := 0
-		return func(next bool) (interface{},int) {
+		return func(next bool) (interface{}, int) {
 			if next && i < clen {
 				j := i
 				r := c.At(i).Val

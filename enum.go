@@ -2,9 +2,9 @@ package data
 
 import (
 	"fmt"
+	"go4ml.xyz/errstr"
+	"go4ml.xyz/fu"
 	"reflect"
-	"sudachen.xyz/pkg/errstr"
-	"sudachen.xyz/pkg/fu"
 	"sync"
 )
 
@@ -75,12 +75,14 @@ func (ce Enumerator) Type() reflect.Type {
 func (ce Enumerator) Convert(v string, value *interface{}, _, _ int) error {
 	if v != "" {
 		e, _, err := ce.enumerate(v)
-		if err != nil { return err }
+		if err != nil {
+			return err
+		}
 		*value = Enum{v, e}
 	}
 	return nil
 }
-func (ce Enumerator) Format(x interface{}) (string,error) {
+func (ce Enumerator) Format(x interface{}) (string, error) {
 	if x == nil { // format N/A value
 		return "", nil
 	}
@@ -138,8 +140,10 @@ func (ce TextEnumerator) Type() reflect.Type {
 
 func (ce TextEnumerator) Convert(v string, value *interface{}, _, _ int) error {
 	if v != "" {
-		_,_,err := ce.enumerate(v)
-		if err != nil { return err }
+		_, _, err := ce.enumerate(v)
+		if err != nil {
+			return err
+		}
 		*value = v
 	}
 	return nil

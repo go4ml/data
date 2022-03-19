@@ -1,6 +1,6 @@
 package data
 
-import "sudachen.xyz/pkg/lazy"
+import "go4ml.xyz/lazy"
 
 type Frame interface {
 	Len() int

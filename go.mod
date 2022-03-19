@@ -1,11 +1,11 @@
-module sudachen.xyz/pkg/data
+module go4ml.xyz/data
 
 go 1.16
 
 require (
+	go4ml.xyz/errstr v0.0.0-20220319161933-fddf66371f9a
+	go4ml.xyz/fu v0.0.0-20220319164044-312fabe3aeaf
+	go4ml.xyz/iokit v0.0.0-20220319170107-5034b0bf1aea
+	go4ml.xyz/lazy v0.0.0-20220319171424-db0f1f1e84c0
 	gotest.tools/v3 v3.0.3
-	sudachen.xyz/pkg/errstr v0.0.0-20211120180422-ba322642b41e
-	sudachen.xyz/pkg/fu v0.0.0-20211120180804-09ad016d53e6
-	sudachen.xyz/pkg/iokit v0.0.0-20211120184236-4d0e6afb663a
-	sudachen.xyz/pkg/lazy v0.0.0-20211120185032-4b18be380f43
 )

@@ -1,7 +1,7 @@
 package data
 
 import (
-	"sudachen.xyz/pkg/lazy"
+	"go4ml.xyz/lazy"
 )
 
 type Table struct{ Frame }
@@ -18,7 +18,7 @@ func (t Table) Lazy() lazy.Source {
 	return t.Frame.Lazy()
 }
 
-func (t Table) Sort(less func(Table,int,int)bool) Table {
+func (t Table) Sort(less func(Table, int, int) bool) Table {
 	return Table{}
 }
 
@@ -30,7 +30,7 @@ func lazyFrame(fr Frame) lazy.Source {
 	return func(...interface{}) lazy.Stream {
 		clen := fr.Len()
 		i := 0
-		return func(next bool) (interface{},int) {
+		return func(next bool) (interface{}, int) {
 			if i < clen && next {
 				j := i
 				r := fr.Row(i)

@@ -1,9 +1,9 @@
 package data
 
 import (
+	"go4ml.xyz/errstr"
+	"go4ml.xyz/lazy"
 	"reflect"
-	"sudachen.xyz/pkg/errstr"
-	"sudachen.xyz/pkg/lazy"
 )
 
 type StructWrapper struct {

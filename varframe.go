@@ -2,16 +2,16 @@ package data
 
 import (
 	"reflect"
-	"sudachen.xyz/pkg/fu"
-	"sudachen.xyz/pkg/lazy"
+	"go4ml.xyz/fu"
+	"go4ml.xyz/lazy"
 	"sync"
 )
 
 const defaultMaxVarpartLength = 32*1024/8 - 16
 
 type varpart struct {
-	columns        []reflect.Value
-	na             []fu.Bits
+	columns                   []reflect.Value
+	na                        []fu.Bits
 	offset, length, allocated int
 }
 
@@ -49,10 +49,10 @@ func (fr *varframe) append(data []Cell) {
 		}
 		width := fr.Width()
 		last = &varpart{
-			columns: make([]reflect.Value, width),
-			na:      make([]fu.Bits, width),
-			offset:  fr.length,
-			length:  0,
+			columns:   make([]reflect.Value, width),
+			na:        make([]fu.Bits, width),
+			offset:    fr.length,
+			length:    0,
 			allocated: reserve,
 		}
 		for i := range fr.factory.Names {

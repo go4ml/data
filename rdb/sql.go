@@ -6,11 +6,11 @@ import (
 	"io"
 	"reflect"
 	"strings"
-	"sudachen.xyz/pkg/data"
-	"sudachen.xyz/pkg/errstr"
-	"sudachen.xyz/pkg/fu"
-	"sudachen.xyz/pkg/iokit"
-	"sudachen.xyz/pkg/lazy"
+	"go4ml.xyz/data"
+	"go4ml.xyz/errstr"
+	"go4ml.xyz/fu"
+	"go4ml.xyz/iokit"
+	"go4ml.xyz/lazy"
 	//	_ "github.com/go-sql-driver/mysql"
 	//	_ "github.com/lib/pq"
 	//	_ "github.com/mattn/go-sqlite3"
@@ -144,7 +144,7 @@ func Source(dbc interface{}, opts ...interface{}) lazy.Source {
 					}
 					j := index
 					index++
-					return  r, j
+					return r, j
 				}
 				return lazy.EndOfStream{rows.Err()}, index
 			}
@@ -228,7 +228,7 @@ func Sink(dbc interface{}, opts ...interface{}) lazy.WorkerFactory {
 		cls = db
 	}
 	if err != nil {
-		return lazy.ErrorSink(errstr.Wrapf(0, err,"database connection error: %v", err.Error()))
+		return lazy.ErrorSink(errstr.Wrapf(0, err, "database connection error: %v", err.Error()))
 	}
 	drv := fu.StrOption(Driver(""), opts)
 
@@ -296,7 +296,7 @@ func Sink(dbc interface{}, opts ...interface{}) lazy.WorkerFactory {
 				names = make([]string, r.Width())
 				pk = make([]bool, r.Width())
 				//drv := fu.StrOption(Driver(""), opts)
-				ns := make([]string,r.Width())
+				ns := make([]string, r.Width())
 				for i := range ns {
 					ns[i] = r.Factory.Name(i)
 				}
@@ -344,7 +344,7 @@ func Sink(dbc interface{}, opts ...interface{}) lazy.WorkerFactory {
 				}
 			}
 		default:
-			return errstr.Errorf("unsupported value type %v",fu.TypeOf(val))
+			return errstr.Errorf("unsupported value type %v", fu.TypeOf(val))
 		}
 		return
 	})

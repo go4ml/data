@@ -2,8 +2,8 @@ package tensor
 
 import (
 	"reflect"
-	"sudachen.xyz/pkg/data"
-	"sudachen.xyz/pkg/fu"
+	"go4ml.xyz/data"
+	"go4ml.xyz/fu"
 )
 
 type tensor32f struct {

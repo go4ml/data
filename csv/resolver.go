@@ -3,13 +3,13 @@ package csv
 import (
 	"fmt"
 	"strconv"
-	"sudachen.xyz/pkg/data"
-	"sudachen.xyz/pkg/data/tensor"
-	"sudachen.xyz/pkg/fu"
+	"go4ml.xyz/data"
+	"go4ml.xyz/data/tensor"
+	"go4ml.xyz/fu"
 	"time"
 )
 
-type Resolver func()mapper
+type Resolver func() mapper
 
 func (r Resolver) As(n string) Resolver {
 	return func() mapper {
@@ -173,7 +173,7 @@ func (r Resolver) Round(n ...int) Resolver {
 	return func() mapper {
 		m := r()
 		xf := m.format
-		m.format = func(v interface{}) (string,error) {
+		m.format = func(v interface{}) (string, error) {
 			if v != nil {
 				switch fv := v.(type) {
 				case float64:
@@ -182,13 +182,13 @@ func (r Resolver) Round(n ...int) Resolver {
 					v = fu.Round32(fv, n[0])
 				}
 			}
-			return format(v,xf)
+			return format(v, xf)
 		}
 		return m
 	}
 }
 
-func format(v interface{}, xf formatter) (string,error) {
+func format(v interface{}, xf formatter) (string, error) {
 	if xf != nil {
 		return xf(v)
 	}

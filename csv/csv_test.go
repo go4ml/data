@@ -2,8 +2,8 @@ package csv
 
 import (
 	"fmt"
-	"sudachen.xyz/pkg/data"
-	"sudachen.xyz/pkg/iokit"
+	"go4ml.xyz/data"
+	"go4ml.xyz/iokit"
 	"testing"
 )
 
@@ -19,7 +19,7 @@ func Test_IrisCsv_1(t *testing.T) {
 		Meta(cls.Integer(), "class").As("label"))
 
 	var q data.Table
-	irisCsv.MustDrain(q.Sink(),4)
+	irisCsv.MustDrain(q.Sink(), 4)
 
 	for i := 0; i < q.Len(); i++ {
 		fmt.Println(q.Row(i))
@@ -34,7 +34,7 @@ func Test_IrisCsv_2(t *testing.T) {
 		Meta(cls.Integer(), "class").As("label"))
 
 	var q data.Table
-	irisCsv.MustDrain(q.Sink(),4)
+	irisCsv.MustDrain(q.Sink(), 4)
 
 	for i := 0; i < q.Len(); i++ {
 		fmt.Println(q.Row(i))

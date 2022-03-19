@@ -1,7 +1,7 @@
 package data
 
 import (
-	"sudachen.xyz/pkg/lazy"
+	"go4ml.xyz/lazy"
 	"testing"
 )
 

@@ -1,8 +1,8 @@
 package data
 
 import (
+	"go4ml.xyz/lazy"
 	"gotest.tools/v3/assert"
-	"sudachen.xyz/pkg/lazy"
 	"testing"
 )
 
@@ -50,7 +50,7 @@ func Test1_ConcurrentTableSink(t *testing.T) {
 	var x Table
 	lazy.List(colors_N).
 		Map1(StructToRow).
-		MustDrain(x.Sink(),8)
+		MustDrain(x.Sink(), 8)
 	assert.Assert(t, x.Len() == len(colors_N))
 	for i, v := range colors_N {
 		//fmt.Println(x.Row(i), x.Col("Color").At(i).String(), v.Color)

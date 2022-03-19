@@ -4,8 +4,8 @@ import (
 	"database/sql"
 	"fmt"
 	"reflect"
-	"sudachen.xyz/pkg/errstr"
-	"sudachen.xyz/pkg/fu"
+	"go4ml.xyz/errstr"
+	"go4ml.xyz/fu"
 )
 
 type IfExists_ int

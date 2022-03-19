@@ -5,7 +5,7 @@ import (
 	"gotest.tools/v3/assert"
 	"reflect"
 	"strings"
-	"sudachen.xyz/pkg/lazy"
+	"go4ml.xyz/lazy"
 	"testing"
 )
 
@@ -51,7 +51,7 @@ func Test1_CollectAnyRowString(t *testing.T) {
 
 func Test1_CollectValueToRow(t *testing.T) {
 	var r []*Row
-	lazy.List(colors).Map(func(c Color)int{return c.Index}).Map1(ValueToRow("Index")).MustCollect(&r)
+	lazy.List(colors).Map(func(c Color) int { return c.Index }).Map1(ValueToRow("Index")).MustCollect(&r)
 	for i, v := range colors {
 		assert.Assert(t, r[i].Col("Index").Int() == v.Index)
 	}

@@ -4,11 +4,11 @@ import (
 	"encoding/csv"
 	"io"
 	"reflect"
-	"sudachen.xyz/pkg/data"
-	"sudachen.xyz/pkg/errstr"
-	"sudachen.xyz/pkg/fu"
-	"sudachen.xyz/pkg/iokit"
-	"sudachen.xyz/pkg/lazy"
+	"go4ml.xyz/data"
+	"go4ml.xyz/errstr"
+	"go4ml.xyz/fu"
+	"go4ml.xyz/iokit"
+	"go4ml.xyz/lazy"
 	"sync"
 )
 
@@ -147,7 +147,9 @@ func read(source iokit.Input, opts ...interface{}) lazy.Source {
 				row, err := rdr.Read()
 
 				if err != nil {
-					if err == io.EOF { err = nil }
+					if err == io.EOF {
+						err = nil
+					}
 					return lazy.EndOfStream{err}, index
 				}
 

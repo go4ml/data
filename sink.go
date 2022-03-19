@@ -1,8 +1,8 @@
 package data
 
 import (
-	"sudachen.xyz/pkg/fu"
-	"sudachen.xyz/pkg/lazy"
+	"go4ml.xyz/fu"
+	"go4ml.xyz/lazy"
 )
 
 func sink1(t *Table, res int) []lazy.Worker {
@@ -28,31 +28,31 @@ func sink1(t *Table, res int) []lazy.Worker {
 	}}
 }
 
-func sink2(t *Table, res int, concurrency int) []lazy.Worker{
+func sink2(t *Table, res int, concurrency int) []lazy.Worker {
 	wf := make([]lazy.Worker, concurrency)
 	vf := make([]*varframe, concurrency)
 	ndx := make([][]int, concurrency)
 	res = res/concurrency + res/10
 	for k := range wf {
-		wf[k] = func(w int, fr *varframe)lazy.Worker{
-			return func(i int, v interface{}, e error)error{
+		wf[k] = func(w int, fr *varframe) lazy.Worker {
+			return func(i int, v interface{}, e error) error {
 				if v != nil {
 					switch r := v.(type) {
 					case *Row:
 						if fr == nil {
 							fr = &varframe{
-								maxVarpartLength: fu.Maxi(defaultMaxVarpartLength,res),
+								maxVarpartLength: fu.Maxi(defaultMaxVarpartLength, res),
 								reserveOnStart:   res,
 							}
 							fr.factory.InitFrom(r.Factory)
 							vf[w] = fr
 						}
 						fr.append(r.Data)
-						ndx[w] = append(ndx[w],i)
+						ndx[w] = append(ndx[w], i)
 						r.Recycle()
 					}
 				} else if e == nil {
-					*t = Table{ ccrComplete(vf, ndx) }
+					*t = Table{ccrComplete(vf, ndx)}
 				}
 				return nil
 			}

@@ -2,11 +2,11 @@ package csv
 
 import (
 	"reflect"
-	"sudachen.xyz/pkg/errstr"
-	"sudachen.xyz/pkg/fu"
+	"go4ml.xyz/errstr"
+	"go4ml.xyz/fu"
 )
 
-type formatter func(value interface{}) (string,error)
+type formatter func(value interface{}) (string, error)
 type converter func(value string, data *interface{}, index, width int) error
 type mapper struct {
 	CsvCol, TableCol string
